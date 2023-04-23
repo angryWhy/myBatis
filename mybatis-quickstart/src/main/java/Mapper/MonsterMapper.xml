@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这是一个mapper xml文件-->
+<!--该文件可以实现对应的接口的方法-->
+<!--namespace指定xml文件对应哪个接口-->
+<mapper namespace="entity.Monster">
+<!--    id就是接口的方法名字,parameterType时放入形参的类型-->
+    <insert id="addMonster" parameterType="entity.Monster">
+        INSERT INTO `monster`
+            (`age`,`birthday`,`email`,`name`,`salary`,`gender`)
+--             #{age}对应着monster的属性，以此类推
+        VALUES(#{age},#{birthday},#{email},#{name},#{salary},#{gender})
+    </insert>
+</mapper>

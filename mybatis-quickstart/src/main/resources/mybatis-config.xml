@@ -26,6 +26,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+        <mapper resource="entity.Monster"/>
     </mappers>
 </configuration>
