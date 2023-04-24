@@ -3,7 +3,7 @@ package entity;
 import java.util.Date;
 
 public class Monster {
-    public Monster(Integer id, Integer age, String name, String email, Date birthday, Double salary, Integer gender) {
+    public Monster(Integer id, Integer age, String name, String email, String birthday, Double salary, Integer gender) {
         this.id = id;
         this.age = age;
         this.name = name;
@@ -18,8 +18,22 @@ public class Monster {
     private Integer age;
     private String name;
     private String email;
-    private Date birthday;
+    private String birthday;
     private Double salary;
+    private Integer gender;
+
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "id=" + id +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birthday=" + birthday +
+                ", salary=" + salary +
+                ", gender=" + gender +
+                '}';
+    }
 
     public Integer getId() {
         return id;
@@ -53,11 +67,11 @@ public class Monster {
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -77,7 +91,7 @@ public class Monster {
         this.gender = gender;
     }
 
-    private Integer gender;
+
     public Monster() {
     }
 }

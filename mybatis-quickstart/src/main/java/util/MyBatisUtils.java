@@ -25,6 +25,6 @@ public class MyBatisUtils {
     }
     //编写方法，返回sqlSession对象
     public static SqlSession getSqlSession(){
-        return sqlSessionFactory.openSession();
+        return sqlSessionFactory.openSession(true);
     }
 }
