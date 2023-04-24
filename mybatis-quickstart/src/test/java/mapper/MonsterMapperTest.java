@@ -3,6 +3,7 @@ package mapper;
 import Mapper.MonsterMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
+import org.junit.Test;
 import util.MyBatisUtils;
 
 public class MonsterMapperTest {
@@ -15,5 +16,10 @@ public class MonsterMapperTest {
         sqlSession= MyBatisUtils.getSqlSession();
         //获取到MonsterMapper对象
         monsterMapper = sqlSession.getMapper(MonsterMapper.class);
+
+    }
+    @Test
+    public void test(){
+        System.out.println(1);
     }
 }
