@@ -8,6 +8,7 @@ import org.junit.Test;
 import util.MyBatisUtils;
 
 import java.util.Date;
+import java.util.List;
 
 public class MonsterMapperTest {
     private SqlSession sqlSession;
@@ -49,6 +50,41 @@ public class MonsterMapperTest {
     @Test
     public void del(){
         monsterMapper.delMonster(21);
+        if(sqlSession!=null){
+            sqlSession.commit();
+            sqlSession.close();
+        }
+        System.out.println("执行成功！");
+    }
+    @Test
+    public void update(){
+        Monster monster = new Monster();
+        monster.setAge(50);
+        monster.setBirthday("2023-02-02");
+        monster.setEmail("875978822@qq.com");
+        monster.setGender(3);
+        monster.setSalary(10000.1);
+        monster.setName("王子轩");
+        monster.setId(7);
+        monsterMapper.updateMonster(monster);
+        if(sqlSession!=null){
+            sqlSession.commit();
+            sqlSession.close();
+        }
+        System.out.println("执行成功！");
+    }
+    @Test
+    public void select(){
+        Monster monster = monsterMapper.getMonsterById(7);
+        if(sqlSession!=null){
+            sqlSession.commit();
+            sqlSession.close();
+        }
+        System.out.println("执行成功！"+monster);
+    }
+    @Test
+    public void findAll(){
+        List<Monster> allMonster = monsterMapper.findAllMonster();
         if(sqlSession!=null){
             sqlSession.commit();
             sqlSession.close();

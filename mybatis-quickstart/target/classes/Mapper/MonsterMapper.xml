@@ -16,4 +16,15 @@
     <delete id="delMonster" parameterType="java.lang.Integer">
         DELETE FROM `monster` WHERE id = #{id}
     </delete>
+    <update id="updateMonster" parameterType="entity.Monster">
+        UPDATE `monster`
+        SET `age` = #{age},`name` = #{name},`birthday`=#{birthday},`salary`=#{salary},`gender`=#{gender},`email`=#{email}
+        WHERE id=#{id}
+    </update>
+    <select id="getMonsterById" resultType="entity.Monster">
+        SELECT * FROM `monster` WHERE id=#{id}
+    </select>
+    <select id="findAllMonster" resultType="entity.Monster">
+        SELECT * FROM `monster`
+    </select>
 </mapper>
