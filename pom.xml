@@ -12,6 +12,7 @@
     <!--    子模块-->
     <modules>
         <module>mybatis-quickstart</module>
+        <module>wzx-mybatis</module>
     </modules>
     <dependencies>
         <!--        mysql依赖安装-->

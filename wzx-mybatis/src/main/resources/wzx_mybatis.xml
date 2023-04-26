@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<database>
+<!--    连接数据库的信息-->
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+    <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"></property>
+    <property name="username" value="root"></property>
+    <property name="password" value="PO1!pVRNJp4i"/>
+</database>
