@@ -20,6 +20,8 @@ public class Configuration {
     Connection connection;
     //属性：类的加载器
     private static ClassLoader loader = ClassLoader.getSystemClassLoader();
+
+
     //读取xml文件，并处理
     public Connection build(String resource) throws DocumentException, SQLException, ClassNotFoundException {
         //加载wzx_mybatis.xml文件，获取到对应的InputStream
@@ -31,6 +33,9 @@ public class Configuration {
         connection = evalDataSource(rootElement);
         return connection;
     }
+
+
+    //连接到数据库
     public Connection evalDataSource(Element node) throws ClassNotFoundException, SQLException {
         if("database".equals(node.getName())){
             String driverClassName = null;
@@ -69,7 +74,7 @@ public class Configuration {
     }
 
 
-    //读取mapper文件
+    //读取mapper文件，将mapper文件解析
     public MapperBean readMapper(String path) throws DocumentException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         //
         MapperBean mapperBean = new MapperBean();
