@@ -34,6 +34,11 @@
             <!--            scope-test表示该jar作用范围在test目录下-->
             <!--            <scope>test</scope>-->
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

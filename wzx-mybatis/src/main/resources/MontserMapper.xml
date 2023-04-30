@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="mapper.MonsterMapper">
+    <select id="getMonster" resultType="entity.Monster">
+        SELECT * FROM `monster` WHERE id = ?
+    </select>
+</mapper>
