@@ -70,21 +70,43 @@ public class Configuration {
 
 
     //读取mapper文件
-    public MapperBean readMapper(String path) throws DocumentException {
+    public MapperBean readMapper(String path) throws DocumentException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        //
         MapperBean mapperBean = new MapperBean();
+
         InputStream resourceAsStream = loader.getResourceAsStream(path);
         SAXReader saxReader = new SAXReader();
         Document document = saxReader.read(resourceAsStream);
         Element root = document.getRootElement();
         String namespace = root.attributeValue("namespace");
+        //设置mapperBean对应的interfaceName
+        mapperBean.setInterfaceName(namespace);
+
         Iterator iterator = root.elementIterator();
         //保存遍历每个元素，保存方法信息
-        ArrayList<Function> objects = new ArrayList<>();
+        ArrayList<Function> list = new ArrayList<>();
         //遍历元素
         while (iterator.hasNext()){
             Element element = (Element)iterator.next();
+            Function function = new Function();
+            String sqlType = element.getName().trim();
+            String funcName = element.attributeValue("id").trim();
+            String resultType = element.attributeValue("resultType");
+            String sql = element.getText();
 
+            //封装到信息方法
+            function.setFuncName(funcName);
+            function.setSql(sql);
+            function.setSqlType(sqlType);
+
+            //反射
+            Object newInstance = Class.forName(resultType).newInstance();
+            function.setResultType(newInstance);
+
+            //将function放进arraylist
+            list.add(function);
         }
-        return null;
+        mapperBean.setFunctions(list);
+        return mapperBean;
     }
 }
