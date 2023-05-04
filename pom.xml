@@ -27,6 +27,7 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.7</version>
         </dependency>
+<!--        测试工具-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

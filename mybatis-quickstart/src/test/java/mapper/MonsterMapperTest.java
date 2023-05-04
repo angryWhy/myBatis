@@ -1,5 +1,6 @@
 package mapper;
 
+import Mapper.MonsterAnnotation;
 import Mapper.MonsterMapper;
 import entity.Monster;
 import org.apache.ibatis.session.SqlSession;
@@ -13,14 +14,17 @@ import java.util.List;
 public class MonsterMapperTest {
     private SqlSession sqlSession;
     private MonsterMapper monsterMapper;
+
+    private MonsterAnnotation monsterAnnotation;
 //    执行测试目标方法之前，都要先执行这个方法
     @Before
     public void init(){
         //添加monster
         sqlSession= MyBatisUtils.getSqlSession();
-        //获取到MonsterMapper对象
+        //获取到MonsterMapper对象，xml文件获取
         monsterMapper = sqlSession.getMapper(MonsterMapper.class);
-
+        //注解方式获取
+        monsterAnnotation = sqlSession.getMapper(MonsterAnnotation.class);
     }
 
     @Test
