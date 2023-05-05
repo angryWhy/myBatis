@@ -8,33 +8,61 @@ import org.junit.Before;
 import org.junit.Test;
 import util.MyBatisUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MonsterMapperTest {
     private SqlSession sqlSession;
     private MonsterMapper monsterMapper;
 
 
-//    执行测试目标方法之前，都要先执行这个方法
+    //    执行测试目标方法之前，都要先执行这个方法
     @Before
-    public void init(){
+    public void init() {
         //添加monster
-        sqlSession= MyBatisUtils.getSqlSession();
+        sqlSession = MyBatisUtils.getSqlSession();
         //获取到MonsterMapper对象，xml文件获取
         monsterMapper = sqlSession.getMapper(MonsterMapper.class);
     }
 
+    //查找名字或者id
     @Test
-    public void findMonsterByIdOrName () {
+    public void findMonsterByIdOrName() {
         Monster monster = new Monster();
         monster.setId(8);
         monster.setName("lao");
         List<Monster> monsters = monsterMapper.findMonsterByIdOrName(monster);
-        for( Monster monster1 : monsters){
+        for (Monster monster1 : monsters) {
             System.out.println(monster1);
         }
-        if(sqlSession != null){
+        if (sqlSession != null) {
             sqlSession.close();
         }
+    }
+
+    //模糊查找
+    @Test
+    public void findMonster() {
+        List<Monster> monsters = monsterMapper.findMonster("w");
+        for (Monster monster1 : monsters) {
+            System.out.println(monster1);
+        }
+        if (sqlSession != null) {
+            sqlSession.close();
+        }
+    }
+
+    //map查询
+    @Test
+    public void findMapMonster() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", 10);
+        map.put("salary",40);
+        List<Monster> monsters = monsterMapper.findMapMonster(map);
+        for (Monster monster1 : monsters) {
+            System.out.println(monster1);
+        }
+
     }
 }

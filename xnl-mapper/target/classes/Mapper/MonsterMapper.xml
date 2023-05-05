@@ -9,4 +9,11 @@
     <select id="findMonsterByIdOrName" resultType="entity.Monster">
         SELECT * FROM `monster` WHERE id = #{id}  OR `name` = #{name}
     </select>
+    <select id="findMonster" resultType="entity.Monster" parameterType="String">
+        SELECT * FROM `monster` WHERE `name` LIKE '%${name}%'
+    </select>
+<!--    以map形式传入参数， 当#{id}，说明map中，key -value ，key是id-->
+    <select id="findMapMonster" resultType="entity.Monster" parameterType="map">
+        SELECT * FROM `monster` WHERE `id` > #{id} AND `salary` > #{salary}
+    </select>
 </mapper>
