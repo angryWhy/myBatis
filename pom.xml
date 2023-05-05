@@ -13,6 +13,7 @@
     <modules>
         <module>mybatis-quickstart</module>
         <module>wzx-mybatis</module>
+        <module>xnl-mapper</module>
     </modules>
     <dependencies>
         <!--        mysql依赖安装-->

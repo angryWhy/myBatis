@@ -38,6 +38,6 @@
     </environments>
     <mappers>
         <mapper resource="Mapper/MonsterMapper.xml"/>
-
+        <mapper class="Mapper.MonsterAnnotation"/>
     </mappers>
 </configuration>
