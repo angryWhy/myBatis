@@ -16,4 +16,6 @@ public interface MonsterMapper {
     public List<Monster> findMonster(String name);
     //使用map查询
     public List<Monster> findMapMonster(Map<String, Object> map);
+    //返回map
+    public List<Map<String,Object>> returnMapMonster(Map<String, Object> map);
 }
