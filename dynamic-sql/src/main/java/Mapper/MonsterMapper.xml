@@ -6,12 +6,14 @@
 <!--该文件可以实现对应的接口的方法-->
 <!--namespace指定xml文件对应哪个接口-->
 <mapper namespace="Mapper.MonsterMapper">
+    <!--    if使用-->
     <select id="findMonsterByAge" resultType="entity.Monster" parameterType="Integer">
         SELECT * FROM `monster` WHERE 1 = 1
         <if test="age >= 0">
             AND age >#{age}
         </if>
     </select>
+    <!--    选择条件-->
     <select id="findAllMonster" resultType="entity.Monster" parameterType="entity.Monster">
         SELECT * FROM `monster`
         <where>
@@ -22,5 +24,20 @@
                 AND `name` = #{name}
             </if>
         </where>
+    </select>
+    <!--    chose选择-->
+    <select id="findMonsterByIdOrName" resultType="entity.Monster" parameterType="map">
+        SELECT * FROM `monster`
+        <choose>
+            <when test="name !=null and name !=''">
+                WHERE `name` = #{name}
+            </when>
+            <when test="id > 0">
+                WHERE `id` > #{id}
+            </when>
+            <otherwise>
+                WHERE `salary` > 100
+            </otherwise>
+        </choose>
     </select>
 </mapper>

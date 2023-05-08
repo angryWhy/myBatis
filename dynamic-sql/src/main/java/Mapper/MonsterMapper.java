@@ -14,4 +14,5 @@ public interface MonsterMapper {
     //年龄大于多少的情况下返回
     List<Monster> findMonsterByAge(@Param("age") Integer age);
     List<Monster> findAllMonster(Monster monster);
+    List<Monster> findMonsterByIdOrName(Map<String,Object> map);
 }
