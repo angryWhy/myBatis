@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import util.MyBatisUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,6 +58,48 @@ public class MapperTest {
             System.out.println(monster);
         }
         if (sqlSession != null) {
+            sqlSession.close();
+        }
+    }
+
+//    传入集合，对应IN操作
+    @Test
+    public void findMonsterForeach() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("ids", Arrays.asList(9, 12, 15));
+        List<Monster> monsters = monsterMapper.findMonsterByIdForeach(map);
+        for (Monster monster : monsters) {
+            System.out.println(monster);
+        }
+        if (sqlSession != null) {
+            sqlSession.close();
+        }
+    }
+
+//    Trim替换WHERE标签
+    @Test
+    public void findMonsterByName_Trim(){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name","wzx");
+        map.put("age",10);
+        List<Monster> monsters = monsterMapper.findMonsterByNameTrim(map);
+        for (Monster monster : monsters) {
+            System.out.println(monster);
+        }
+        if (sqlSession != null) {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void updateBySet(){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name","wzx");
+        map.put("id",8);
+        monsterMapper.updateMonsterBySet(map);
+        //修改需要有commit
+        if (sqlSession != null) {
+            sqlSession.commit();
             sqlSession.close();
         }
     }

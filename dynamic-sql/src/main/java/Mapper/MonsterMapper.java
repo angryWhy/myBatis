@@ -15,4 +15,8 @@ public interface MonsterMapper {
     List<Monster> findMonsterByAge(@Param("age") Integer age);
     List<Monster> findAllMonster(Monster monster);
     List<Monster> findMonsterByIdOrName(Map<String,Object> map);
+    List<Monster> findMonsterByIdForeach(Map<String,Object> map);
+    List<Monster> findMonsterByNameTrim(Map<String,Object> map);
+
+    void updateMonsterBySet(Map<String,Object> map);
 }

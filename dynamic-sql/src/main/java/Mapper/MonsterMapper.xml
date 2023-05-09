@@ -40,4 +40,57 @@
             </otherwise>
         </choose>
     </select>
+    <!--    forEach, SELECT * FROM `monster` WHERE id IN(9,12,15)-->
+    <!--    item就是每次取出的值，open对应的就是 IN(9,12,15)，separator就是遍历出来的值多个值得分隔符号，close对应就是sql语句最后的)-->
+    <!--    #{id}对应的就是item的id-->
+    <select id="findMonsterByIdForeach" resultType="entity.Monster" parameterType="map">
+        SELECT * FROM `monster`
+        <if test="ids !=null and ids != ''">
+            <where>
+                id IN
+                <foreach collection="ids" item="id" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </where>
+        </if>
+    </select>
+
+<!--    使用trim替换where条件，and 或者 or 自定义化配置 ，-->
+<!--    若子句的开头为 AND 或者 OR去除-->
+    <select id="findMonsterByNameTrim" resultType="entity.Monster" parameterType="map">
+        SELECT * FROM `monster`
+
+        <trim prefix="WHERE" prefixOverrides="and|or|wzx">
+            <if test="name !=null and name != ''">
+                wzx `name` = #{name}
+            </if>
+            <if test="age !=null and age !=''">
+                AND `age` > #{age}
+            </if>
+        </trim>
+    </select>
+    <update id="updateMonsterBySet" parameterType="map">
+        UPDATE `monster`
+        <set>
+            <if test="age !=null and age!=''">
+                `age` = #{age},
+            </if>
+            <if test="email !=null and email!=''">
+                `email` = #{email},
+            </if>
+            <if test="name !=null and name!=''">
+                `name` = #{name},
+            </if>
+            <if test="salary !=null and salary!=''">
+                `salary` = #{salary},
+            </if>
+            <if test="gender !=null and gender!=''">
+                `gender` = #{gender},
+            </if>
+            <if test="birthday !=null and birthday!=''">
+                `birthday` = #{birthday},
+            </if>
+        </set>
+            WHERE `id` = #{id}
+    </update>
 </mapper>
