@@ -59,7 +59,6 @@
 <!--    若子句的开头为 AND 或者 OR去除-->
     <select id="findMonsterByNameTrim" resultType="entity.Monster" parameterType="map">
         SELECT * FROM `monster`
-
         <trim prefix="WHERE" prefixOverrides="and|or|wzx">
             <if test="name !=null and name != ''">
                 wzx `name` = #{name}

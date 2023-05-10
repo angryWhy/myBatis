@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mybatis-quickstart" />
         <module name="dynamic-sql" />
+        <module name="mybatis-mapping" />
         <module name="wzx-mybatis" />
         <module name="xnl-mapper" />
       </profile>

@@ -15,6 +15,7 @@
         <module>wzx-mybatis</module>
         <module>xnl-mapper</module>
         <module>dynamic-sql</module>
+        <module>mybatis-mapping</module>
     </modules>
     <dependencies>
         <!--        mysql依赖安装-->
