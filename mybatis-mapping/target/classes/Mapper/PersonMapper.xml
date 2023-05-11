@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这是一个mapper xml文件-->
+<!--该文件可以实现对应的接口的方法-->
+<!--namespace指定xml文件对应哪个接口-->
+<mapper namespace="Mapper.PersonMapper">
+    <resultMap id="PersonResultMap" type="entity.Person">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+<!--        association,复杂类型，表示对级联查询的结果进行配置-->
+        <association property="card" javaType="entity.IdenCard">
+            <result property="id" column="id"/>
+            <result property="card_sn" column="card_id"/>
+        </association>
+    </resultMap>
+    <select id="getPersonById" parameterType="Integer" resultMap="PersonResultMap">
+        SELECT * FROM `person`,`idencard` WHERE `person`.id = #{id} AND `person`.card_id = `idencard`.id
+    </select>
+</mapper>

@@ -2,17 +2,12 @@ package test;
 
 
 import Mapper.IdenCardMapper;
-import entity.IdenCard;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 import util.MyBatisUtils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
-public class MapperTest {
+public class IdenCard {
     private SqlSession sqlSession;
     private IdenCardMapper idenCardMapper;
 
@@ -26,7 +21,7 @@ public class MapperTest {
     //测试级联查询
     @Test
     public void getIdenCardById(){
-        IdenCard idenCard= idenCardMapper.getIdenCardById(1);
+        entity.IdenCard idenCard= idenCardMapper.getIdenCardById(1);
         System.out.println(idenCard);
         if(sqlSession !=null){
             sqlSession.close();

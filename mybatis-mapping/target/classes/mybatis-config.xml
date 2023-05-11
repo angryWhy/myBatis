@@ -38,5 +38,6 @@
     </environments>
     <mappers>
         <mapper resource="Mapper/IdenCardMapper.xml"/>
+        <mapper resource="Mapper/PersonMapper.xml"/>
     </mappers>
 </configuration>
