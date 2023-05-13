@@ -15,4 +15,6 @@ public interface PersonMapper {
     })
     Person getPersonById(Integer id);
     Person getPersonById2(Integer id);
+
+    Person getPersonById3(Integer card_id);
 }

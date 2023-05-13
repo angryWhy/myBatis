@@ -28,4 +28,8 @@
     <select id="getPersonById2" parameterType="Integer" resultMap="PersonResultMap2">
         SELECT * FROM `person` WHERE `id` = #{id}
     </select>
+
+    <select id="getPersonById3" parameterType="Integer" resultMap="entity.Person">
+        SELECT * FROM `person` WHERE `card_id` = #{card_id}
+    </select>
 </mapper>

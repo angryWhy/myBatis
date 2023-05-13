@@ -3,6 +3,14 @@ package entity;
 public class IdenCard {
     private Integer id;
     private String card_sn;
+    private Person person;
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public Integer getId() {
         return id;

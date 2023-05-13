@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mapper.MybatisPetMapper">
+    <resultMap id="petsAndUser" type="entity.MyBatisPet">
+        <id property="id" column="id"/>
+        <result property="nickname" column="nickname"/>
+        <association property="users" column="user_id" select="Mapper.MybatisUserMapper.getUserById"/>
+    </resultMap>
+    <select id="getPetsById" parameterType="Integer" resultMap="petsAndUser">
+        SELECT * FROM `mybatis_pet` WHERE `user_id` = #{user_id}
+    </select>
+    <select id="getPetById" parameterType="Integer" resultMap="entity.MyBatisPet">
+        SELECT * FROM `mybatis_pet` WHERE `id` = #{id}
+    </select>
+</mapper>
