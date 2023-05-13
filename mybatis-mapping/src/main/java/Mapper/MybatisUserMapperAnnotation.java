@@ -8,7 +8,7 @@ public interface MybatisUserMapperAnnotation {
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "name",column = "name"),
-            @Result(property = "pets",column = "id",many = @Many(select = ""))
+            @Result(property = "pets",column = "id",many = @Many(select = "Mapper.MybasitPetMapperAnnotation.getPetsById"))
     })
     MyBatisUser getUserById(Integer id);
 }
