@@ -16,4 +16,8 @@
     <select id="findMapMonster" resultType="entity.Monster" parameterType="map">
         SELECT * FROM `monster` WHERE `id` > #{id} AND `salary` > #{salary}
     </select>
+<!--    配置实现返回map-->
+    <select id="returnMapMonster" resultType="map" parameterType="map">
+        SELECT * FROM `monster` WHERE `id` > #{id} AND `salary` > #{salary}
+    </select>
 </mapper>

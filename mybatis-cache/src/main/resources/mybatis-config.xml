@@ -8,6 +8,8 @@
 
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+<!--        全局性开启或者关闭映射器缓存，默认是true-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 <!--    包下面有很多的类-->
     <typeAliases>
@@ -37,9 +39,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="Mapper/IdenCardMapper.xml"/>
-        <mapper resource="Mapper/PersonMapper.xml"/>
-        <mapper resource="Mapper/MybatisUserMapper.xml"/>
-        <mapper resource="Mapper/MybatisPetMapper.xml"/>
+        <mapper resource="Mapper/MonsterMapper.xml"/>
+
     </mappers>
 </configuration>

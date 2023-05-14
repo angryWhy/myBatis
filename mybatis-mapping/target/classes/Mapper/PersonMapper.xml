@@ -18,4 +18,18 @@
     <select id="getPersonById" parameterType="Integer" resultMap="PersonResultMap">
         SELECT * FROM `person`,`idencard` WHERE `person`.id = #{id} AND `person`.card_id = `idencard`.id
     </select>
+
+<!--    方式二-->
+    <resultMap id="PersonResultMap2" type="entity.Person">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="card" column="card_id" select="Mapper.IdenCardMapper.getIdenCardById"/>
+    </resultMap>
+    <select id="getPersonById2" parameterType="Integer" resultMap="PersonResultMap2">
+        SELECT * FROM `person` WHERE `id` = #{id}
+    </select>
+
+    <select id="getPersonById3" parameterType="Integer" resultMap="entity.Person">
+        SELECT * FROM `person` WHERE `card_id` = #{card_id}
+    </select>
 </mapper>

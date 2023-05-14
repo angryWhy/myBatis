@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 import util.MyBatisUtils;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

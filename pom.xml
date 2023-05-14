@@ -16,6 +16,7 @@
         <module>xnl-mapper</module>
         <module>dynamic-sql</module>
         <module>mybatis-mapping</module>
+        <module>mybatis-cache</module>
     </modules>
     <dependencies>
         <!--        mysql依赖安装-->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这是一个mapper xml文件-->
+<!--该文件可以实现对应的接口的方法-->
+<!--namespace指定xml文件对应哪个接口-->
+<mapper namespace="Mapper.MonsterMapper">
+<!--    eviction先进先出-->
+<!--    flushInterval刷新时间间隔-->
+<!--    size，引用书目，默认1024-->
+<!--    readOnly是否只读-->
+    <cache eviction="FIFO" flushInterval="6000" size="512" readOnly="true"/>
+<!--    id就是接口的方法名字,parameterType时放入形参的类型-->
+<!--    &#45;&#45;             #{age}对应着monster的属性，以此类推-->
+    <insert id="addMonster" parameterType="entity.Monster" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `monster`
+            (`age`,`birthday`,`email`,`name`,`salary`,`gender`)
+        VALUES (#{age},#{birthday},#{email},#{name},#{salary},#{gender})
+    </insert>
+    <delete id="delMonster" parameterType="java.lang.Integer">
+        DELETE FROM `monster` WHERE id = #{id}
+    </delete>
+    <update id="updateMonster" parameterType="entity.Monster">
+        UPDATE `monster`
+        SET `age` = #{age},`name` = #{name},`birthday`=#{birthday},`salary`=#{salary},`gender`=#{gender},`email`=#{email}
+        WHERE id=#{id}
+    </update>
+    <select id="getMonsterById" resultType="entity.Monster">
+        SELECT * FROM `monster` WHERE id=#{id}
+    </select>
+    <select id="findAllMonster" resultType="entity.Monster">
+        SELECT * FROM `monster`
+    </select>
+</mapper>

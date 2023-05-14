@@ -39,5 +39,7 @@
     <mappers>
         <mapper resource="Mapper/IdenCardMapper.xml"/>
         <mapper resource="Mapper/PersonMapper.xml"/>
+        <mapper resource="Mapper/MybatisUserMapper.xml"/>
+        <mapper resource="Mapper/MybatisPetMapper.xml"/>
     </mappers>
 </configuration>

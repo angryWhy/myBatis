@@ -6,6 +6,14 @@
 <!--该文件可以实现对应的接口的方法-->
 <!--namespace指定xml文件对应哪个接口-->
 <mapper namespace="Mapper.IdenCardMapper">
+    <resultMap id="IdenCardSum" type="entity.IdenCard">
+        <id property="id" column="id"/>
+        <result property="card_sn" column="card_sn"/>
+        <association property="person" column="id" select="Mapper.PersonMapper.getPersonById3"/>
+    </resultMap>
+    <select id="getIdenCardById2" parameterType="Integer" resultType="IdenCardSum">
+        SELECT * FROM `idencard` WHERE `id` = #{id}
+    </select>
     <select id="getIdenCardById" parameterType="Integer" resultType="entity.IdenCard">
         SELECT * FROM `idencard` WHERE `id` = #{id}
     </select>
